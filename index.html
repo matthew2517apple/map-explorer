@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Map Exploration </title>
+    <link rel="stylesheet" href="mapStyles.css">
+</head>
+
+<body>
+
+    <p> Welcome to "Map Explorer"</p>
+    <p> <i> The map is generated as you play</i> </p>
+
+    <hr>
+
+    <p> Challenge: explore the map while trying to avoid water </p>
+
+    <hr>
+
+    <div id="slidersDiv">
+        <p> Each new tile is generated based on tiles within a <span id="radiusSpan"> 2 </span> tile radius </p>
+        <p> (plus an additional chance of each terrain) </p>
+        <p> Slide to adjust radius:
+            <input type="range" id="influenceRadiusSlider" min="1" max="3" value="2" class="slider" color="gold"> </p>
+        <p> Random chance of extra grass:
+            <input type="range" id="grassSlider" min="0" max="3" value="1" class="slider"> </p>
+        <p> Random chance of extra water:
+            <input type="range" id="waterSlider" min="0" max="3" value="1" class="slider"> </p>
+        <p> Random chance of extra mountains:
+            <input type="range" id="mountainSlider" min="0" max="3" value="1" class="slider"> </p>
+    </div>
+
+    <hr>
+
+    <p>
+        Leave footprints?
+        <!-- Next 4 lines are from w3schools.com: -->
+        <label class="switch">
+            <input type="checkbox" id="footprintsToggle" onclick="toggleFootprints()">
+            <span class="slider round"> </span>
+        </label>
+        (footprints will be erased when map expands)
+    </p>
+
+    <hr>
+
+    <p id="turnCounterLabel"> loading </p>
+    <p id="pointsLabel"> loading </p>
+    <p id="grassLabel"> loading </p>
+    <p id="waterLabel"> loading </p>
+    <p id="mountainLabel"> loading </p>
+
+    <div id="joystickDiv">
+        <div topButtons>
+            <button class="invisible" id="UL" > Northwest (x) </button>
+            <button class="joystick" id="northButton" > North (w) </button>
+            <button class="invisible" id="UR" > Northeast (x) </button>
+        </div>
+
+        <div bottomButtons>
+            <button class="joystick" id="westButton"> West (a) </button>
+            <button class="joystick" id="southButton"> South (s) </button>
+            <button class="joystick" id="eastButton"> East (d) </button>
+        </div>
+    </div>
+
+    <canvas id="canvas" width="100" height="100" style="border:2px solid gold"></canvas>
+
+    <script src="MapGenerator.js"></script>
+
+</body>
+</html>
